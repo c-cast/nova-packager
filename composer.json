@@ -1,0 +1,26 @@
+{
+    "name": "c-cast/nova-packager",
+    "description": "A package to modularize Laravel Nova 4",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CCast\\NovaPackager\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CCast\\NovaPackager\\NovaPackagerServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "cCast",
+            "email": "info@ccast.it"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}

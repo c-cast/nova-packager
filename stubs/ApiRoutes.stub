@@ -1,0 +1,14 @@
+<?php
+
+
+use Illuminate\Support\Facades\Route;
+
+/**
+ * Here you can define api routes for your module's cards.
+ *
+ * @example /api/{{uriKey}}/hello-world
+ */
+
+Route::get('hello-word', function(){
+    return 'Hello World';
+});

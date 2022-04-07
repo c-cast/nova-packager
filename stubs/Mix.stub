@@ -1,0 +1,10 @@
+let mix = require('laravel-mix')
+let path = require('path')
+
+mix
+  .setPublicPath('dist')
+  .js('Assets/js/{{uriKey}}.js', 'js')
+  .vue({version: 3})
+  .alias({'@': path.join(__dirname, 'Assets/js/')})
+  .sass('Assets/sass/{{uriKey}}.scss', 'css')
+  .version()

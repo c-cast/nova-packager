@@ -1,0 +1,10 @@
+<?php
+
+namespace {{namespace}}\Policies;
+
+use CCast\NovaPackager\Library\BasePolicy;
+
+class {{policy}} extends BasePolicy
+{
+    // Write here your policies, remember all base policies are setted TRUE by default
+}

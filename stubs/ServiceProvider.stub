@@ -1,0 +1,113 @@
+<?php
+
+namespace {{namespace}};
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\ServiceProvider;
+use Laravel\Nova\Actions\ActionResource;
+use Laravel\Nova\Events\ServingNova;
+use Laravel\Nova\Nova;
+use Laravel\Nova\Resource;
+use ReflectionClass;
+use Symfony\Component\Finder\Finder;
+use Illuminate\Support\Str;
+
+class {{className}}ServiceProvider extends ServiceProvider
+{
+    /**
+         * Module Namespace
+         *
+         * @var string
+         */
+        protected $namespace = "{{namespace}}";
+
+        /**
+         * Register any application services.
+         *
+         * @return void
+         */
+        public function register()
+        {
+             $this->app->booted(function () {
+                $this->routes();
+             });
+        }
+
+        /**
+         * Register the module's routes.
+         *
+         * @return void
+         */
+        protected function routes()
+        {
+            if ($this->app->routesAreCached()) {
+                return;
+            }
+
+            Route::middleware(['nova'])
+                    ->prefix('api/{{uriKey}}')
+                    ->group(__DIR__.'/Routes/api.php');
+
+        }
+
+        /**
+         * Bootstrap your assets
+         *
+         * @return void
+         */
+        public function boot()
+        {
+            $this->loadMigrationsFrom(__DIR__ .'/../Database/migrations');
+
+            Nova::serving(function (ServingNova $event) {
+                Nova::resources($this->resources());
+                Nova::dashboards($this->dashboards());
+                Nova::tools($this->tools());
+                Nova::script('{{uriKey}}', __DIR__.'/../dist/js/{{uriKey}}.js');
+                Nova::style('{{uriKey}}', __DIR__.'/../dist/css/{{uriKey}}.css');
+            });
+        }
+
+
+        /**
+         * Autoload all resources of your module
+         */
+        protected function resources()
+        {
+            $directory = __DIR__ . '/Resources';
+            $namespace = $this->namespace;
+            $resources = [];
+
+            foreach ((new Finder)->in($directory)->files() as $resource) {
+                $resource = str_replace(
+                    '.php',
+                    '',
+                    $namespace."\\Resources\\".Str::afterLast($resource, '\\')
+                );
+
+                if (is_subclass_of($resource, Resource::class) &&
+                    ! (new ReflectionClass($resource))->isAbstract() &&
+                    ! (is_subclass_of($resource, ActionResource::class))) {
+                    $resources[] = $resource;
+                }
+            }
+
+            return $resources;
+        }
+
+        /**
+         * Here you can register your dashboards
+         */
+        protected function dashboards()
+        {
+            return [];
+        }
+
+        /**
+         * Here you can register your tools connected to module
+         */
+        protected function tools()
+        {
+            return [];
+        }
+}
