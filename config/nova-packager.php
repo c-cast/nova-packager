@@ -18,6 +18,7 @@ return [
         \CCast\NovaPackager\Commands\CreatePackageCommand::class,
         \CCast\NovaPackager\Commands\CreatePartitionCommand::class,
         \CCast\NovaPackager\Commands\CreatePolicyCommand::class,
+        \CCast\NovaPackager\Commands\CreateProgressCommand::class,
         \CCast\NovaPackager\Commands\CreateResourceCommand::class,
         \CCast\NovaPackager\Commands\CreateResourceToolCommand::class,
         \CCast\NovaPackager\Commands\CreateServiceProviderCommand::class,

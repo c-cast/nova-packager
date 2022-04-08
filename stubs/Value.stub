@@ -5,7 +5,7 @@ namespace {{namespace}}\Metrics;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Value;
 
-class {{value}} extends Value
+class {{metric}} extends Value
 {
     /**
      * Calculate the value of the metric.
