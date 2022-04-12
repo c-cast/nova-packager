@@ -1,6 +1,6 @@
 # Nova Packager by cCast
 
-Nova Packager is a newer version of NovaModules, created for Nova 4.0.
+Nova Packager is a newer version of NovaModules, created for **Nova 4.0**.
 
 With Nova Packager you can create modules inside your Laravel Nova application and have different 
 folders for each module.
@@ -15,7 +15,12 @@ You can easily create a new package using the artisan command:
 php artisan nova-packager:create {package}
 ```
 
-Here is the list of available features creable:
+If you want change some configurations in config file you can publish config file:
+```
+php artisan vendor:publish --tag=nova-packager
+```
+
+Here is the list of available features:
 
 - Action
 - Card
@@ -24,7 +29,7 @@ Here is the list of available features creable:
 - Field
 - Filter
 - Lens
-- Metrics (Partition / Value / Trend)
+- Metrics (Partition / Value / Trend / Progress)
 - Migration
 - Model
 - Policy
@@ -33,4 +38,9 @@ Here is the list of available features creable:
 - Service Provider
 - Tool
 
+# License
+The MIT License (MIT). Please see <a href="https://github.com/c-cast/nova-packager/blob/master/LICENSE">License File</a> for more information.
+
+# Notes
+This package is a newer version of <a href="https://github.com/mycmdev/nova-modules">mycmdev/nova-modules</a> that i'm not going to update anymore.
 
