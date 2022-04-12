@@ -1,5 +1,9 @@
 # Nova Packager by cCast
 
+![PHP from Packagist](https://img.shields.io/packagist/php-v/c-cast/nova-packager?style=plastic)
+![Packagist](https://img.shields.io/packagist/l/c-cast/nova-packager?color=yellow&style=plastic)
+![Packagist](https://img.shields.io/packagist/dt/c-cast/nova-packager?color=green&style=plastic)
+
 Nova Packager is a newer version of NovaModules, created for **Nova 4.0**.
 
 With Nova Packager you can create modules inside your Laravel Nova application and have different 
