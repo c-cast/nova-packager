@@ -57,14 +57,14 @@ class {{className}}ServiceProvider extends ServiceProvider
          */
         public function boot()
         {
-            $this->loadMigrationsFrom(__DIR__ .'/../Database/migrations');
+            $this->loadMigrationsFrom(__DIR__ .'/Database/migrations');
 
             Nova::serving(function (ServingNova $event) {
                 Nova::resources($this->resources());
                 Nova::dashboards($this->dashboards());
                 Nova::tools($this->tools());
-                Nova::script('{{uriKey}}', __DIR__.'/../dist/js/{{uriKey}}.js');
-                Nova::style('{{uriKey}}', __DIR__.'/../dist/css/{{uriKey}}.css');
+                Nova::script('{{uriKey}}', __DIR__.'/dist/js/{{uriKey}}.js');
+                Nova::style('{{uriKey}}', __DIR__.'/dist/css/{{uriKey}}.css');
             });
         }
 
