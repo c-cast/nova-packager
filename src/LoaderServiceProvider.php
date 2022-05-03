@@ -4,6 +4,7 @@ namespace CCast\NovaPackager;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Laravel\Nova\Nova;
 use Symfony\Component\Finder\Finder;
 
 class LoaderServiceProvider extends ServiceProvider
@@ -14,6 +15,13 @@ class LoaderServiceProvider extends ServiceProvider
     }
 
     public function register()
+    {
+        Nova::booted(function(){
+            $this->registerResources();
+        });
+    }
+
+    protected function registerResources()
     {
         $path = base_path(config('nova-packager.path'));
 
@@ -30,6 +38,5 @@ class LoaderServiceProvider extends ServiceProvider
                 $this->app->register($provider);
             }
         }
-
     }
 }
