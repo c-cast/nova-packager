@@ -48,8 +48,6 @@ class CreatePackageCommand extends Command
 
         $directories = [
             'Assets',
-            'Database',
-            'Routes',
             'Assets/js',
             'Assets/js/Fields',
             'Assets/js/Filters',
@@ -58,8 +56,11 @@ class CreatePackageCommand extends Command
             'Assets/js/Tools',
             'Assets/sass',
             'Assets/views',
+            'Database',
             'Database/migrations',
             'Database/seeds',
+            'Resources',
+            'Routes',
         ];
 
         foreach ($directories as $directory){
