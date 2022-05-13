@@ -3,6 +3,9 @@
 namespace CCast\NovaPackager;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
+use Laravel\Nova\Nova;
+use Symfony\Component\Finder\Finder;
 
 class NovaPackagerServiceProvider extends ServiceProvider
 {
