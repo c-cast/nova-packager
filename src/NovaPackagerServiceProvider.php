@@ -15,10 +15,31 @@ class NovaPackagerServiceProvider extends ServiceProvider
         ], 'nova-packager');
 
         $this->commands(config('nova-packager.commands'));
+
+        $this->registerResources();
     }
 
     public function register()
     {
-        $this->app->register(LoaderServiceProvider::class);
+        //
+    }
+
+    protected function registerResources()
+    {
+        $path = base_path(config('nova-packager.path'));
+
+        $namespace = config('nova-packager.namespace');
+
+        if(!is_dir($path)) return;
+
+        foreach((new Finder())->in($path)->directories() as $dir){
+
+            $name = Str::studly($dir->getFilename());
+            $provider = "$namespace\\$name\\{$name}ServiceProvider";
+
+            if(class_exists($provider)){
+                $this->app->register($provider);
+            }
+        }
     }
 }
