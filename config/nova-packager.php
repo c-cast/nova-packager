@@ -25,6 +25,7 @@ return [
         \CCast\NovaPackager\Commands\CreateToolCommand::class,
         \CCast\NovaPackager\Commands\CreateTrendCommand::class,
         \CCast\NovaPackager\Commands\CreateValueCommand::class,
-        \CCast\NovaPackager\Commands\SeedCommand::class
+        \CCast\NovaPackager\Commands\SeedCommand::class,
+        \CCast\NovaPackager\Commands\ResourceListCommand::class
     ]
 ];
