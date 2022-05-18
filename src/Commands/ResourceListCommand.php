@@ -32,7 +32,7 @@ class ResourceListCommand extends Command
                     $resource = str_replace(
                         '.php',
                         '',
-                        $namespace."\\Resources\\".Str::afterLast($resource, '\\')
+                        $namespace."\\Resources\\".Str::afterLast($resource, '/')
                     );
 
                     if (is_subclass_of($resource, Resource::class) &&
