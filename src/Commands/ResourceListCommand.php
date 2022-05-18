@@ -23,6 +23,8 @@ class ResourceListCommand extends Command
 
         $resources = [];
 
+        $OS_Separator = PHP_OS === 'Linux' ? '/' : '\\';
+
         foreach( new \DirectoryIterator($packagesDirectory) as $dir )
         {
             if(!$dir->isDot()){
@@ -32,7 +34,7 @@ class ResourceListCommand extends Command
                     $resource = str_replace(
                         '.php',
                         '',
-                        $namespace."\\Resources\\".Str::afterLast($resource, '/')
+                        $namespace."\\Resources\\".Str::afterLast($resource, $OS_Separator)
                     );
 
                     if (is_subclass_of($resource, Resource::class) &&

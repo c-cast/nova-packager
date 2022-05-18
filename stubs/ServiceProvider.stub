@@ -78,11 +78,13 @@ class {{className}}ServiceProvider extends ServiceProvider
             $namespace = $this->namespace;
             $resources = [];
 
+            $OS_Separator = PHP_OS === 'Linux' ? '/' : '\\';
+
             foreach ((new Finder)->in($directory)->files() as $resource) {
                 $resource = str_replace(
                     '.php',
                     '',
-                    $namespace."\\Resources\\".Str::afterLast($resource, '/')
+                    $namespace."\\Resources\\".Str::afterLast($resource, $OS_Separator)
                 );
 
                 if (is_subclass_of($resource, Resource::class) &&
