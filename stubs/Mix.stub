@@ -1,5 +1,6 @@
 let mix = require('laravel-mix')
 let path = require('path')
+require('./nova.mix')
 
 mix
   .setPublicPath('dist')
@@ -7,4 +8,5 @@ mix
   .vue({version: 3})
   .alias({'@': path.join(__dirname, 'Assets/js/')})
   .sass('Assets/sass/{{uriKey}}.scss', 'css')
+  .nova('{{vendor}}')
   .version()

@@ -97,14 +97,17 @@ class CreatePackageCommand extends Command
      */
     protected function generateComposer()
     {
-        $name = $this->argument('package');
+        $name = Str::kebab($this->argument('package'));
+        $vendor = Str::kebab($this->argument('vendor'));
 
         $template = str_replace([
             '{{package}}',
-            '{{serviceProvider}}'
+            '{{serviceProvider}}',
+            '{{vendor}}'
         ],[
             $name,
-            "{$this->namespace($name)}\\{$this->studly($name)}\\{$this->studly($name)}ServiceProvider"
+            "{$this->namespace($name)}\\\\{$this->studly($name)}ServiceProvider",
+            $vendor
         ], $this->stub('Composer'));
 
         file_put_contents($this->dir($this->studly($name))."/composer.json", $template);
@@ -119,6 +122,7 @@ class CreatePackageCommand extends Command
     protected function generateAssets()
     {
         $name = $this->argument('package');
+        $vendor = $this->argument('vendor');
 
         $template = str_replace([
             '{{uriKey}}'
@@ -131,6 +135,11 @@ class CreatePackageCommand extends Command
         file_put_contents($this->dir($this->studly($name))."/Assets/js/$uriKey.js", $this->stub('Js'));
         file_put_contents($this->dir($this->studly($name))."/Assets/sass/$uriKey.scss", $this->stub('Css'));
         file_put_contents($this->dir($this->studly($name)) . "/webpack.mix.js", $template);
+        file_put_contents($this->dir($this->studly($name)) . "/nova.mix.js", str_replace([
+            '{{vendor}}'
+        ], [
+            "$vendor/$uriKey"
+        ], $this->stub('NovaMix')));
         file_put_contents($this->dir($this->studly($name)) . "/package.json", $this->stub('Package'));
         file_put_contents($this->dir($this->studly($name))."/.gitignore", $this->stub('Git'));
 

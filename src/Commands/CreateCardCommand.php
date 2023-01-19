@@ -36,6 +36,7 @@ class CreateCardCommand extends Command
         ], $this->stub('Card'));
 
         $this->createDirIfDoesntExists('Cards', $this->studly($package));
+        $this->createDirIfDoesntExists("Assets/js/Cards", $this->studly($package));
         $this->createDirIfDoesntExists("Assets/js/Cards/{$this->studly($card)}", $this->studly($package));
 
         $file = $this->dir($this->studly($package))."/Cards/{$this->studly($card)}.php";

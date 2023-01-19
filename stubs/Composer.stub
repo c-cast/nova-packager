@@ -1,5 +1,5 @@
 {
-    "name": "c-cast/{{package}}",
+    "name": "{{vendor}}/{{package}}",
     "description": "A Beautiful Laravel Nova tool helping modularize your resources.",
     "keywords": [
         "laravel",
